@@ -13,3 +13,7 @@ body {
 .flex-center {
     align-self: center;
 }
+
+svg {
+    cursor: pointer;
+}
