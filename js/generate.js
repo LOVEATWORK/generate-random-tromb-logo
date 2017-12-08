@@ -12,6 +12,8 @@ $("document").ready(function() {
     var background = getRandomItem();
     var single_col = getRandomItem();
 
+    var bgcol = hexToRgb(background);
+
     while (single_col == background) {
         single_col = getRandomItem();
     }
@@ -21,7 +23,7 @@ $("document").ready(function() {
     });
 
     $(".box").attr("fill", background);
-    $("body").css("background-color", background);
+    $("body").css("background-color", 'rgba('+bgcol.r+','+bgcol.g+','+bgcol.b+',0.9)');
 
 })
 
@@ -55,8 +57,15 @@ $("#link").on('click', function(){
 
 });
 
-
-
 function getRandomItem() {
     return rnd = colors[Math.floor(Math.random()*colors.length)];
+}
+
+function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
 }
