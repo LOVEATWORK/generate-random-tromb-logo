@@ -44,14 +44,8 @@ $("#link").on('click', function(){
         source = source.replace(/^<svg/, '<svg xmlns:xlink="http://www.w3.org/1999/xlink"');
     }
 
-    //add xml declaration
     source = '<?xml version="1.0" standalone="no"?>\r\n' + source;
-
-    //convert svg source to URI data scheme.
     var url = "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(source);
-
-    //set url value to a element's href attribute.
-
     $("#link").attr("href", url);
 
 
