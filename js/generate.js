@@ -9,15 +9,17 @@ var colors = [
 ];
 
 $("document").ready(function() {
-    var color = getRandomItem()
     var background = getRandomItem();
-    
-    if (color == background)
-        background = getRandomItem();
-    
-    console.log(color + ' & ' + background);
+    var single_col = getRandomItem();
 
-    $(".line").attr("fill", color);
+    while (single_col == background) {
+        single_col = getRandomItem();
+    }
+
+    $(".line").each(function(i, item) {
+        $(item).attr("fill", single_col);
+    });
+
     $(".box").attr("fill", background);
     $("body").css("background-color", background);
 
